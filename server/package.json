@@ -1,0 +1,25 @@
+{
+  "name": "proof2work-server",
+  "version": "1.0.0",
+  "description": "South African Youth Work-Readiness backend REST API",
+  "private": true,
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "6.0.0",
+    "better-sqlite3": "13.0.3",
+    "cors": "2.8.6",
+    "dotenv": "18.0.9",
+    "express": "5.2.1",
+    "jsonwebtoken": "9.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.14"
+  }
+}
