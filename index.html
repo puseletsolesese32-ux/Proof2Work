@@ -1,61 +1,329 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proof2Work</title>
+    <meta name="description" content="Proof2Work helps young people build practical skills, complete challenges and prepare for work.">
+    <title>Proof2Work | Build Your Future</title>
     <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Proof2Work</h1>
-        <p>Build your skills. Show your growth. Prepare for work.</p>
-        <div id="langSwitcher"></div>
-        <div id="authStatus"></div>
-    </header>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a href="#" class="brand" data-page="home">
+                <span class="brand-icon">P</span>
+                <span>Proof<span class="brand-light">2Work</span></span>
+            </a>
 
-    <main>
-        <section id="auth">
-            <h2>Account</h2>
-            <div class="row">
-                <input id="authName" placeholder="Name (for register)">
-                <input id="authEmail" placeholder="Email">
-                <input id="authPassword" type="password" placeholder="Password">
-                <button id="btnRegister">Register</button>
-                <button id="btnLogin">Login</button>
-                <button id="btnLogout" style="display:none;">Logout</button>
+            <p class="nav-label">MENU</p>
+            <nav class="side-nav" aria-label="Main navigation">
+                <button class="nav-link active" data-page="home">
+                    <span class="nav-icon">⌂</span> Home
+                </button>
+                <button class="nav-link" data-page="challenges">
+                    <span class="nav-icon">◇</span> Challenges
+                </button>
+                <button class="nav-link" data-page="portfolio">
+                    <span class="nav-icon">▤</span> My Portfolio
+                </button>
+                <button class="nav-link" data-page="profile">
+                    <span class="nav-icon">◎</span> My Profile
+                </button>
+            </nav>
+
+            <div class="sidebar-help">
+                <div class="help-icon">✦</div>
+                <h3>Your future starts here</h3>
+                <p>Small steps today can open doors tomorrow.</p>
+                <button class="button button-light button-small" data-page="challenges">
+                    Find a challenge
+                </button>
             </div>
-            <p id="authMsg"></p>
-        </section>
 
-        <section id="modules">
-            <h2>Work-Readiness Modules</h2>
-            <div id="modulesList"></div>
-        </section>
+            <div class="sidebar-footer">Proof2Work · Demo version</div>
+        </aside>
 
-        <section id="jobs">
-            <h2>Jobs</h2>
-            <div class="filters">
-                <input id="jobSkill" placeholder="Filter by skill (e.g. communication)">
-                <button id="btnFilterJobs">Filter</button>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="mobile-brand">
+                    <span class="brand-icon">P</span>
+                    <span>Proof2Work</span>
+                </div>
+                <div class="topbar-spacer"></div>
+                <span class="status-pill"><span class="status-dot"></span> Keep growing</span>
+                <button class="avatar avatar-small" data-page="profile" aria-label="Open profile">P</button>
+            </header>
+
+            <div class="page-container">
+                <!-- HOME PAGE -->
+                <section class="page active" id="page-home">
+                    <div class="welcome-banner">
+                        <div class="welcome-copy">
+                            <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+                            <h1>Build your skills.<br>Show your <span>potential.</span></h1>
+                            <p>Learn by doing, build real projects and show the world what you can do.</p>
+                            <button class="button button-primary" data-page="challenges">
+                                Explore challenges <span aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                        <div class="welcome-art" aria-hidden="true">
+                            <div class="art-circle"></div>
+                            <div class="art-card art-card-back"></div>
+                            <div class="art-card art-card-front">
+                                <div class="art-check">✓</div>
+                                <div class="art-line long"></div>
+                                <div class="art-line"></div>
+                                <div class="art-progress"><span></span></div>
+                                <small>Progress in action</small>
+                            </div>
+                            <div class="art-star">✦</div>
+                            <div class="art-spark">✧</div>
+                        </div>
+                    </div>
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">YOUR PROGRESS</span>
+                            <h2>Look how far you can go</h2>
+                        </div>
+                        <button class="text-button" data-page="portfolio">View portfolio →</button>
+                    </div>
+
+                    <div class="stats-grid">
+                        <article class="stat-card">
+                            <div class="stat-icon mint">◇</div>
+                            <p>Available challenges</p>
+                            <h3 id="stat-challenges">6</h3>
+                            <span class="stat-note">Ready for you to explore</span>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-icon lavender">✓</div>
+                            <p>Challenges completed</p>
+                            <h3 id="stat-completed">0</h3>
+                            <span class="stat-note">Every step counts</span>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-icon peach">▤</div>
+                            <p>Portfolio projects</p>
+                            <h3 id="stat-projects">2</h3>
+                            <span class="stat-note">Show what you can do</span>
+                        </article>
+                    </div>
+
+                    <div class="section-heading section-heading-gap">
+                        <div>
+                            <span class="eyebrow">TAKE YOUR NEXT STEP</span>
+                            <h2>Recommended challenges</h2>
+                        </div>
+                        <button class="text-button" data-page="challenges">See all →</button>
+                    </div>
+                    <div class="challenge-grid" id="home-challenges"></div>
+
+                    <div class="tip-banner">
+                        <div class="tip-icon">✦</div>
+                        <div>
+                            <h3>Progress over perfection</h3>
+                            <p>You do not need to know everything to begin. Choose one challenge and learn as you go.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CHALLENGES PAGE -->
+                <section class="page" id="page-challenges">
+                    <div class="page-intro">
+                        <span class="eyebrow">LEARN BY DOING</span>
+                        <h1>Find your next challenge</h1>
+                        <p>Build practical skills one challenge at a time.</p>
+                    </div>
+
+                    <div class="challenge-toolbar">
+                        <label class="search-box">
+                            <span aria-hidden="true">⌕</span>
+                            <input type="search" id="challenge-search" placeholder="Search challenges..." aria-label="Search challenges">
+                        </label>
+                        <label class="filter-select">
+                            <span class="sr-only">Filter by category</span>
+                            <select id="category-filter">
+                                <option value="all">All categories</option>
+                                <option value="Development">Development</option>
+                                <option value="Design">Design</option>
+                                <option value="Career">Career skills</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="filter-chips" aria-label="Challenge level filters">
+                        <button class="filter-chip active" data-level="all">All levels</button>
+                        <button class="filter-chip" data-level="Beginner">Beginner</button>
+                        <button class="filter-chip" data-level="Intermediate">Intermediate</button>
+                    </div>
+
+                    <p class="results-count" id="results-count">Showing all challenges</p>
+                    <div class="challenge-grid" id="all-challenges"></div>
+                    <div class="empty-state hidden" id="empty-challenges">
+                        <span>⌕</span>
+                        <h3>No challenges found</h3>
+                        <p>Try another search or change your filters.</p>
+                        <button class="button button-primary" id="clear-filters">Clear filters</button>
+                    </div>
+                </section>
+
+                <!-- PORTFOLIO PAGE -->
+                <section class="page" id="page-portfolio">
+                    <div class="page-intro">
+                        <span class="eyebrow">SHOW YOUR GROWTH</span>
+                        <h1>My portfolio</h1>
+                        <p>A place to collect your projects, skills and achievements.</p>
+                    </div>
+
+                    <div class="portfolio-summary">
+                        <div class="portfolio-summary-icon">▤</div>
+                        <div>
+                            <h2>Your work tells your story</h2>
+                            <p>Keep adding projects as you learn. Each project can help demonstrate your abilities.</p>
+                        </div>
+                        <button class="button button-primary" id="add-project-button">+ Add project</button>
+                    </div>
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="eyebrow">YOUR WORK</span>
+                            <h2>Projects</h2>
+                        </div>
+                        <span class="count-label" id="project-count">2 projects</span>
+                    </div>
+                    <div class="portfolio-grid" id="portfolio-projects"></div>
+
+                    <div class="section-heading section-heading-gap">
+                        <div>
+                            <span class="eyebrow">WHAT YOU CAN DO</span>
+                            <h2>My skills</h2>
+                        </div>
+                    </div>
+                    <div class="skills-panel">
+                        <div class="skills-list" id="skills-list"></div>
+                        <form id="add-skill-form" class="add-skill-form">
+                            <label for="new-skill">Add a skill</label>
+                            <div class="inline-form">
+                                <input id="new-skill" type="text" maxlength="35" placeholder="e.g. Communication" required>
+                                <button class="button button-primary" type="submit">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- PROFILE PAGE -->
+                <section class="page" id="page-profile">
+                    <div class="page-intro">
+                        <span class="eyebrow">YOUR PERSONAL SPACE</span>
+                        <h1>My profile</h1>
+                        <p>Tell people a little about yourself and what you are working towards.</p>
+                    </div>
+
+                    <div class="profile-layout">
+                        <aside class="profile-card">
+                            <div class="avatar avatar-large" id="profile-avatar">P</div>
+                            <h2 id="profile-display-name">Your Name</h2>
+                            <p id="profile-display-role">Aspiring professional</p>
+                            <div class="profile-divider"></div>
+                            <div class="profile-detail"><span>✦</span><span id="profile-display-location">South Africa</span></div>
+                            <div class="profile-detail"><span>▤</span><span>Building my future</span></div>
+                        </aside>
+
+                        <div class="profile-form-card">
+                            <div class="form-card-heading">
+                                <div>
+                                    <h2>About me</h2>
+                                    <p>Update your information below.</p>
+                                </div>
+                            </div>
+                            <form id="profile-form">
+                                <div class="form-field">
+                                    <label for="profile-name">Full name</label>
+                                    <input id="profile-name" type="text" maxlength="70" placeholder="Enter your name" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="profile-role">Professional goal</label>
+                                    <input id="profile-role" type="text" maxlength="80" placeholder="e.g. Aspiring software developer">
+                                </div>
+                                <div class="form-field">
+                                    <label for="profile-location">Location</label>
+                                    <input id="profile-location" type="text" maxlength="80" placeholder="e.g. South Africa">
+                                </div>
+                                <div class="form-field">
+                                    <label for="profile-about">A little about me</label>
+                                    <textarea id="profile-about" rows="5" maxlength="500" placeholder="Share your interests, goals and what you are learning..."></textarea>
+                                </div>
+                                <button class="button button-primary" type="submit">Save profile</button>
+                            </form>
+                            <p class="form-note">Demo version: changes stay in this browser when local storage is available.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <span>© 2026 Proof2Work</span>
+                    <span>Learn. Build. Show your growth.</span>
+                </footer>
             </div>
-            <div id="jobsList"></div>
-        </section>
+        </main>
+    </div>
 
-        <section id="assessment">
-            <h2>Assessment</h2>
-            <div class="row">
-                <input id="ans1" type="number" min="0" max="100" placeholder="Score 1 (0-100)">
-                <input id="ans2" type="number" min="0" max="100" placeholder="Score 2 (0-100)">
-                <input id="ans3" type="number" min="0" max="100" placeholder="Score 3 (0-100)">
-                <button id="btnSubmitAssessment">Submit Assessment</button>
+    <!-- CHALLENGE DETAILS MODAL -->
+    <div class="modal-backdrop hidden" id="challenge-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-card">
+            <button class="modal-close" id="close-challenge-modal" aria-label="Close challenge details">×</button>
+            <span class="eyebrow" id="modal-category">CHALLENGE</span>
+            <h2 id="modal-title">Challenge title</h2>
+            <div class="modal-meta">
+                <span class="level-tag" id="modal-level">Beginner</span>
+                <span id="modal-duration">⏱ 2 hours</span>
             </div>
-            <p id="assessmentMsg"></p>
-            <h3>My History</h3>
-            <div id="assessmentHistory"></div>
-        </section>
-    </main>
+            <p id="modal-description"></p>
+            <h3>What you will practise</h3>
+            <ul id="modal-skills"></ul>
+            <div class="modal-actions">
+                <button class="button button-outline" id="cancel-challenge">Close</button>
+                <button class="button button-primary" id="complete-challenge">Mark as completed ✓</button>
+            </div>
+        </div>
+    </div>
 
-    <script src="app.js"></script>
+    <!-- ADD PROJECT MODAL -->
+    <div class="modal-backdrop hidden" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <div class="modal-card">
+            <button class="modal-close" id="close-project-modal" aria-label="Close project form">×</button>
+            <span class="eyebrow">SHOW YOUR WORK</span>
+            <h2 id="project-modal-title">Add a project</h2>
+            <form id="project-form">
+                <div class="form-field">
+                    <label for="project-title">Project name</label>
+                    <input id="project-title" type="text" maxlength="80" placeholder="e.g. My first website" required>
+                </div>
+                <div class="form-field">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" rows="4" maxlength="300" placeholder="What did you build or learn?" required></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="project-category">Category</label>
+                    <select id="project-category">
+                        <option>Development</option>
+                        <option>Design</option>
+                        <option>Business</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button class="button button-outline" type="button" id="cancel-project">Cancel</button>
+                    <button class="button button-primary" type="submit">Add project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
