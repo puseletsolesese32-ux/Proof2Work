@@ -8,6 +8,31 @@ const STORAGE_KEY = "proof2work_demo_users_v2";
 const SESSION_KEY = "proof2work_demo_session_v2";
 const LANGUAGE_KEY = "proof2work_language_v2";
 
+
+const API_BASE_URL = "http://localhost:4000";
+
+async function apiRequest(endpoint, options = {}) {
+  const token = localStorage.getItem("proof2work_token");
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...options.headers,
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Something went wrong.");
+  }
+
+  return data;
+}
+
+
 const $ = (selector) => document.querySelector(selector);
 
 const languageSelect = $("#language-select");
@@ -1144,7 +1169,7 @@ function readPageAloud() {
 $("#show-signup").addEventListener("click", showSignup);
 $("#show-login").addEventListener("click", showLogin);
 
-signupForm.addEventListener("submit", (event) => {
+signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const name = $("#signup-name").value.trim();
