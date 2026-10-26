@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +10,52 @@
     <header>
         <h1>Proof2Work</h1>
         <p>Build your skills. Show your growth. Prepare for work.</p>
+        <div id="langSwitcher"></div>
+        <div id="authStatus"></div>
     </header>
 
     <main>
-        <section id="home">
-            <h2>Your journey starts here</h2>
-            <p>
-                Practise real-world tasks, build your skills,
-                and show employers what you can do.
-            </p>
-            <button>Explore Challenges</button>
+        <section id="auth">
+            <h2>Account</h2>
+            <div class="row">
+                <input id="authName" placeholder="Name (for register)">
+                <input id="authEmail" placeholder="Email">
+                <input id="authPassword" type="password" placeholder="Password">
+                <button id="btnRegister">Register</button>
+                <button id="btnLogin">Login</button>
+                <button id="btnLogout" style="display:none;">Logout</button>
+            </div>
+            <p id="authMsg"></p>
+        </section>
+
+        <section id="modules">
+            <h2>Work-Readiness Modules</h2>
+            <div id="modulesList"></div>
+        </section>
+
+        <section id="jobs">
+            <h2>Jobs</h2>
+            <div class="filters">
+                <input id="jobSkill" placeholder="Filter by skill (e.g. communication)">
+                <button id="btnFilterJobs">Filter</button>
+            </div>
+            <div id="jobsList"></div>
+        </section>
+
+        <section id="assessment">
+            <h2>Assessment</h2>
+            <div class="row">
+                <input id="ans1" type="number" min="0" max="100" placeholder="Score 1 (0-100)">
+                <input id="ans2" type="number" min="0" max="100" placeholder="Score 2 (0-100)">
+                <input id="ans3" type="number" min="0" max="100" placeholder="Score 3 (0-100)">
+                <button id="btnSubmitAssessment">Submit Assessment</button>
+            </div>
+            <p id="assessmentMsg"></p>
+            <h3>My History</h3>
+            <div id="assessmentHistory"></div>
         </section>
     </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
