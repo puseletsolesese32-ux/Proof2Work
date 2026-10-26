@@ -2,328 +2,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Proof2Work helps young people build practical skills, complete challenges and prepare for work.">
-    <title>Proof2Work | Build Your Future</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proof2Work helps young people build and demonstrate their workplace skills.">
+  <title>Proof2Work | Your Skills, Your Future</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-    <div class="app-shell">
-        <aside class="sidebar">
-            <a href="#" class="brand" data-page="home">
-                <span class="brand-icon">P</span>
-                <span>Proof<span class="brand-light">2Work</span></span>
-            </a>
+  <header class="site-header">
+    <a class="logo" href="#" aria-label="Proof2Work home">
+      <span class="logo-mark">P2W</span>
+      <span>Proof2Work</span>
+    </a>
 
-            <p class="nav-label">MENU</p>
-            <nav class="side-nav" aria-label="Main navigation">
-                <button class="nav-link active" data-page="home">
-                    <span class="nav-icon">⌂</span> Home
-                </button>
-                <button class="nav-link" data-page="challenges">
-                    <span class="nav-icon">◇</span> Challenges
-                </button>
-                <button class="nav-link" data-page="portfolio">
-                    <span class="nav-icon">▤</span> My Portfolio
-                </button>
-                <button class="nav-link" data-page="profile">
-                    <span class="nav-icon">◎</span> My Profile
-                </button>
-            </nav>
-
-            <div class="sidebar-help">
-                <div class="help-icon">✦</div>
-                <h3>Your future starts here</h3>
-                <p>Small steps today can open doors tomorrow.</p>
-                <button class="button button-light button-small" data-page="challenges">
-                    Find a challenge
-                </button>
-            </div>
-
-            <div class="sidebar-footer">Proof2Work · Demo version</div>
-        </aside>
-
-        <main class="main-content">
-            <header class="topbar">
-                <div class="mobile-brand">
-                    <span class="brand-icon">P</span>
-                    <span>Proof2Work</span>
-                </div>
-                <div class="topbar-spacer"></div>
-                <span class="status-pill"><span class="status-dot"></span> Keep growing</span>
-                <button class="avatar avatar-small" data-page="profile" aria-label="Open profile">P</button>
-            </header>
-
-            <div class="page-container">
-                <!-- HOME PAGE -->
-                <section class="page active" id="page-home">
-                    <div class="welcome-banner">
-                        <div class="welcome-copy">
-                            <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
-                            <h1>Build your skills.<br>Show your <span>potential.</span></h1>
-                            <p>Learn by doing, build real projects and show the world what you can do.</p>
-                            <button class="button button-primary" data-page="challenges">
-                                Explore challenges <span aria-hidden="true">→</span>
-                            </button>
-                        </div>
-                        <div class="welcome-art" aria-hidden="true">
-                            <div class="art-circle"></div>
-                            <div class="art-card art-card-back"></div>
-                            <div class="art-card art-card-front">
-                                <div class="art-check">✓</div>
-                                <div class="art-line long"></div>
-                                <div class="art-line"></div>
-                                <div class="art-progress"><span></span></div>
-                                <small>Progress in action</small>
-                            </div>
-                            <div class="art-star">✦</div>
-                            <div class="art-spark">✧</div>
-                        </div>
-                    </div>
-
-                    <div class="section-heading">
-                        <div>
-                            <span class="eyebrow">YOUR PROGRESS</span>
-                            <h2>Look how far you can go</h2>
-                        </div>
-                        <button class="text-button" data-page="portfolio">View portfolio →</button>
-                    </div>
-
-                    <div class="stats-grid">
-                        <article class="stat-card">
-                            <div class="stat-icon mint">◇</div>
-                            <p>Available challenges</p>
-                            <h3 id="stat-challenges">6</h3>
-                            <span class="stat-note">Ready for you to explore</span>
-                        </article>
-                        <article class="stat-card">
-                            <div class="stat-icon lavender">✓</div>
-                            <p>Challenges completed</p>
-                            <h3 id="stat-completed">0</h3>
-                            <span class="stat-note">Every step counts</span>
-                        </article>
-                        <article class="stat-card">
-                            <div class="stat-icon peach">▤</div>
-                            <p>Portfolio projects</p>
-                            <h3 id="stat-projects">2</h3>
-                            <span class="stat-note">Show what you can do</span>
-                        </article>
-                    </div>
-
-                    <div class="section-heading section-heading-gap">
-                        <div>
-                            <span class="eyebrow">TAKE YOUR NEXT STEP</span>
-                            <h2>Recommended challenges</h2>
-                        </div>
-                        <button class="text-button" data-page="challenges">See all →</button>
-                    </div>
-                    <div class="challenge-grid" id="home-challenges"></div>
-
-                    <div class="tip-banner">
-                        <div class="tip-icon">✦</div>
-                        <div>
-                            <h3>Progress over perfection</h3>
-                            <p>You do not need to know everything to begin. Choose one challenge and learn as you go.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CHALLENGES PAGE -->
-                <section class="page" id="page-challenges">
-                    <div class="page-intro">
-                        <span class="eyebrow">LEARN BY DOING</span>
-                        <h1>Find your next challenge</h1>
-                        <p>Build practical skills one challenge at a time.</p>
-                    </div>
-
-                    <div class="challenge-toolbar">
-                        <label class="search-box">
-                            <span aria-hidden="true">⌕</span>
-                            <input type="search" id="challenge-search" placeholder="Search challenges..." aria-label="Search challenges">
-                        </label>
-                        <label class="filter-select">
-                            <span class="sr-only">Filter by category</span>
-                            <select id="category-filter">
-                                <option value="all">All categories</option>
-                                <option value="Development">Development</option>
-                                <option value="Design">Design</option>
-                                <option value="Career">Career skills</option>
-                                <option value="Business">Business</option>
-                            </select>
-                        </label>
-                    </div>
-
-                    <div class="filter-chips" aria-label="Challenge level filters">
-                        <button class="filter-chip active" data-level="all">All levels</button>
-                        <button class="filter-chip" data-level="Beginner">Beginner</button>
-                        <button class="filter-chip" data-level="Intermediate">Intermediate</button>
-                    </div>
-
-                    <p class="results-count" id="results-count">Showing all challenges</p>
-                    <div class="challenge-grid" id="all-challenges"></div>
-                    <div class="empty-state hidden" id="empty-challenges">
-                        <span>⌕</span>
-                        <h3>No challenges found</h3>
-                        <p>Try another search or change your filters.</p>
-                        <button class="button button-primary" id="clear-filters">Clear filters</button>
-                    </div>
-                </section>
-
-                <!-- PORTFOLIO PAGE -->
-                <section class="page" id="page-portfolio">
-                    <div class="page-intro">
-                        <span class="eyebrow">SHOW YOUR GROWTH</span>
-                        <h1>My portfolio</h1>
-                        <p>A place to collect your projects, skills and achievements.</p>
-                    </div>
-
-                    <div class="portfolio-summary">
-                        <div class="portfolio-summary-icon">▤</div>
-                        <div>
-                            <h2>Your work tells your story</h2>
-                            <p>Keep adding projects as you learn. Each project can help demonstrate your abilities.</p>
-                        </div>
-                        <button class="button button-primary" id="add-project-button">+ Add project</button>
-                    </div>
-
-                    <div class="section-heading">
-                        <div>
-                            <span class="eyebrow">YOUR WORK</span>
-                            <h2>Projects</h2>
-                        </div>
-                        <span class="count-label" id="project-count">2 projects</span>
-                    </div>
-                    <div class="portfolio-grid" id="portfolio-projects"></div>
-
-                    <div class="section-heading section-heading-gap">
-                        <div>
-                            <span class="eyebrow">WHAT YOU CAN DO</span>
-                            <h2>My skills</h2>
-                        </div>
-                    </div>
-                    <div class="skills-panel">
-                        <div class="skills-list" id="skills-list"></div>
-                        <form id="add-skill-form" class="add-skill-form">
-                            <label for="new-skill">Add a skill</label>
-                            <div class="inline-form">
-                                <input id="new-skill" type="text" maxlength="35" placeholder="e.g. Communication" required>
-                                <button class="button button-primary" type="submit">Add</button>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-
-                <!-- PROFILE PAGE -->
-                <section class="page" id="page-profile">
-                    <div class="page-intro">
-                        <span class="eyebrow">YOUR PERSONAL SPACE</span>
-                        <h1>My profile</h1>
-                        <p>Tell people a little about yourself and what you are working towards.</p>
-                    </div>
-
-                    <div class="profile-layout">
-                        <aside class="profile-card">
-                            <div class="avatar avatar-large" id="profile-avatar">P</div>
-                            <h2 id="profile-display-name">Your Name</h2>
-                            <p id="profile-display-role">Aspiring professional</p>
-                            <div class="profile-divider"></div>
-                            <div class="profile-detail"><span>✦</span><span id="profile-display-location">South Africa</span></div>
-                            <div class="profile-detail"><span>▤</span><span>Building my future</span></div>
-                        </aside>
-
-                        <div class="profile-form-card">
-                            <div class="form-card-heading">
-                                <div>
-                                    <h2>About me</h2>
-                                    <p>Update your information below.</p>
-                                </div>
-                            </div>
-                            <form id="profile-form">
-                                <div class="form-field">
-                                    <label for="profile-name">Full name</label>
-                                    <input id="profile-name" type="text" maxlength="70" placeholder="Enter your name" required>
-                                </div>
-                                <div class="form-field">
-                                    <label for="profile-role">Professional goal</label>
-                                    <input id="profile-role" type="text" maxlength="80" placeholder="e.g. Aspiring software developer">
-                                </div>
-                                <div class="form-field">
-                                    <label for="profile-location">Location</label>
-                                    <input id="profile-location" type="text" maxlength="80" placeholder="e.g. South Africa">
-                                </div>
-                                <div class="form-field">
-                                    <label for="profile-about">A little about me</label>
-                                    <textarea id="profile-about" rows="5" maxlength="500" placeholder="Share your interests, goals and what you are learning..."></textarea>
-                                </div>
-                                <button class="button button-primary" type="submit">Save profile</button>
-                            </form>
-                            <p class="form-note">Demo version: changes stay in this browser when local storage is available.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <footer class="main-footer">
-                    <span>© 2026 Proof2Work</span>
-                    <span>Learn. Build. Show your growth.</span>
-                </footer>
-            </div>
-        </main>
+    <div class="header-language">
+      <label for="language-select" data-i18n="chooseLanguage">Choose language</label>
+      <select id="language-select" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="zu">isiZulu</option>
+        <option value="st">Sesotho</option>
+        <option value="nso">Sepedi</option>
+      </select>
     </div>
+  </header>
 
-    <!-- CHALLENGE DETAILS MODAL -->
-    <div class="modal-backdrop hidden" id="challenge-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-card">
-            <button class="modal-close" id="close-challenge-modal" aria-label="Close challenge details">×</button>
-            <span class="eyebrow" id="modal-category">CHALLENGE</span>
-            <h2 id="modal-title">Challenge title</h2>
-            <div class="modal-meta">
-                <span class="level-tag" id="modal-level">Beginner</span>
-                <span id="modal-duration">⏱ 2 hours</span>
-            </div>
-            <p id="modal-description"></p>
-            <h3>What you will practise</h3>
-            <ul id="modal-skills"></ul>
-            <div class="modal-actions">
-                <button class="button button-outline" id="cancel-challenge">Close</button>
-                <button class="button button-primary" id="complete-challenge">Mark as completed ✓</button>
-            </div>
+  <main>
+    <!-- Welcome screen -->
+    <section id="welcome" class="welcome-section">
+      <div class="welcome-copy">
+        <p class="eyebrow" data-i18n="welcomeLabel">WELCOME TO PROOF2WORK</p>
+
+        <h1 data-i18n="welcomeTitle">
+          Your skills. Your proof. Your future.
+        </h1>
+
+        <p data-i18n="welcomeDescription">
+          Build your confidence, practise real workplace tasks, and show
+          what you can do — even when you do not have work experience yet.
+        </p>
+
+        <div class="welcome-features">
+          <p data-i18n="featureOne">✓ Discover your strengths</p>
+          <p data-i18n="featureTwo">✓ Practise workplace skills</p>
+          <p data-i18n="featureThree">✓ Build your skills portfolio</p>
         </div>
-    </div>
+      </div>
 
-    <!-- ADD PROJECT MODAL -->
-    <div class="modal-backdrop hidden" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-        <div class="modal-card">
-            <button class="modal-close" id="close-project-modal" aria-label="Close project form">×</button>
-            <span class="eyebrow">SHOW YOUR WORK</span>
-            <h2 id="project-modal-title">Add a project</h2>
-            <form id="project-form">
-                <div class="form-field">
-                    <label for="project-title">Project name</label>
-                    <input id="project-title" type="text" maxlength="80" placeholder="e.g. My first website" required>
-                </div>
-                <div class="form-field">
-                    <label for="project-description">Description</label>
-                    <textarea id="project-description" rows="4" maxlength="300" placeholder="What did you build or learn?" required></textarea>
-                </div>
-                <div class="form-field">
-                    <label for="project-category">Category</label>
-                    <select id="project-category">
-                        <option>Development</option>
-                        <option>Design</option>
-                        <option>Business</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="modal-actions">
-                    <button class="button button-outline" type="button" id="cancel-project">Cancel</button>
-                    <button class="button button-primary" type="submit">Add project</button>
-                </div>
-            </form>
+      <div class="form-card" id="account-card">
+        <h2 data-i18n="accountTitle">Let's get started</h2>
+
+        <p class="muted-text" data-i18n="accountDescription">
+          Create an account or log in to continue.
+        </p>
+
+        <div class="auth-tabs" role="group" aria-label="Account options">
+          <button type="button" id="show-signup" class="btn btn-primary">
+            <span data-i18n="signUp">Sign up</span>
+          </button>
+
+          <button type="button" id="show-login" class="btn btn-secondary">
+            <span data-i18n="logIn">Log in</span>
+          </button>
         </div>
-    </div>
 
-    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-name" data-i18n="fullName">Full name</label>
+            <input
+              id="signup-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              maxlength="100"
+              placeholder="Enter your full name"
+              data-i18n-placeholder="namePlaceholder"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email" data-i18n="email">Email address</label>
+            <input
+              id="signup-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+              data-i18n-placeholder="emailPlaceholder"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password" data-i18n="password">Password</label>
+            <input
+              id="signup-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+              placeholder="At least 8 characters"
+              data-i18n-placeholder="passwordPlaceholder"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password-confirm" data-i18n="confirmPassword">
+              Confirm password
+            </label>
+            <input
+              id="signup-password-confirm"
+              name="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+              placeholder="Enter your password again"
+              data-i18n-placeholder="confirmPasswordPlaceholder"
+            >
+          </div>
+
+          <button class="btn btn-primary btn-full" type="submit" data-i18n="createAccount">
+            Create account
+          </button>
+        </form>
+
+        <form id="login-form" hidden>
+          <div class="form-group">
+            <label for="login-email" data-i18n="email">Email address</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+              data-i18n-placeholder="emailPlaceholder"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" data-i18n="password">Password</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              placeholder="Enter your password"
+              data-i18n-placeholder="loginPasswordPlaceholder"
+            >
+          </div>
+
+          <button class="btn btn-primary btn-full" type="submit" data-i18n="logIn">
+            Log in
+          </button>
+        </form>
+
+        <p id="auth-message" class="form-message" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Profile setup -->
+    <section id="qualification" class="section section-muted" hidden>
+      <div class="narrow-container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="profileLabel">YOUR JOURNEY</p>
+          <h2 data-i18n="profileTitle">Tell us about yourself</h2>
+          <p data-i18n="profileDescription">
+            Add your background so we can help you practise relevant skills.
+          </p>
+        </div>
+
+        <form id="qualification-form" class="form-card">
+          <div class="form-group">
+            <label for="qualification-name" data-i18n="qualification">Qualification</label>
+            <input
+              id="qualification-name"
+              name="qualification"
+              type="text"
+              required
+              placeholder="e.g. Diploma in Information Technology"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="institution" data-i18n="institution">School or institution</label>
+            <input id="institution" name="institution" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="study-status" data-i18n="studyStatus">Study status</label>
+            <select id="study-status" name="studyStatus" required>
+              <option value="">Choose an option</option>
+              <option value="studying">Currently studying</option>
+              <option value="completed">Completed</option>
+              <option value="paused">Paused my studies</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="completion-year" data-i18n="completionYear">Completion year (if applicable)</label>
+            <input id="completion-year" name="completionYear" type="number" min="1980" max="2100">
+          </div>
+
+          <div class="form-group">
+            <label for="skills" data-i18n="skills">Your current skills</label>
+            <textarea id="skills" name="skills" rows="3" placeholder="e.g. communication, HTML, teamwork"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="career-interest" data-i18n="careerInterest">Career interest</label>
+            <select id="career-interest" name="careerInterest" required>
+              <option value="">Choose a career field</option>
+              <option value="software">Software development</option>
+              <option value="data">Data and analytics</option>
+              <option value="design">Design and user experience</option>
+              <option value="support">IT support</option>
+              <option value="business">Business and administration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="career-goal" data-i18n="careerGoal">Your career goal</label>
+            <textarea id="career-goal" name="careerGoal" rows="3" required placeholder="What would you like to learn or achieve?"></textarea>
+          </div>
+
+          <p id="qualification-message" class="form-message" role="status" aria-live="polite"></p>
+
+          <button type="submit" class="btn btn-primary btn-full" data-i18n="saveProfile">
+            Save my profile
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="section" hidden>
+      <div class="container">
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow" data-i18n="dashboardLabel">YOUR PROGRESS</p>
+            <h2><span data-i18n="hello">Hello</span>, <span id="dashboard-name"></span>!</h2>
+            <p data-i18n="dashboardDescription">Your skills journey starts here.</p>
+          </div>
+
+          <button id="edit-profile" type="button" class="btn btn-secondary" data-i18n="editProfile">
+            Edit profile
+          </button>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="info-card">
+            <h3 data-i18n="myProfile">My profile</h3>
+            <p><strong data-i18n="qualification">Qualification:</strong> <span id="profile-qualification"></span></p>
+            <p><strong data-i18n="institution">Institution:</strong> <span id="profile-institution"></span></p>
+            <p><strong data-i18n="studyStatus">Study status:</strong> <span id="profile-status"></span></p>
+            <p><strong data-i18n="completionYear">Completion year:</strong> <span id="profile-year"></span></p>
+            <p><strong data-i18n="skills">Skills:</strong> <span id="profile-skills"></span></p>
+            <p><strong data-i18n="careerInterest">Career interest:</strong> <span id="profile-career-interest"></span></p>
+            <p><strong data-i18n="careerGoal">Career goal:</strong> <span id="profile-career-goal"></span></p>
+          </article>
+
+          <article class="info-card">
+            <h3 data-i18n="assessmentTitle">Skills assessment</h3>
+            <p data-i18n="assessmentDescription">
+              Discover your strengths and identify skills to improve.
+            </p>
+            <button id="start-assessment" type="button" class="btn btn-primary" data-i18n="startAssessment">
+              Start assessment
+            </button>
+          </article>
+
+          <article class="info-card">
+            <h3 data-i18n="simulationTitle">Workplace practice</h3>
+            <p data-i18n="simulationDescription">
+              Practise workplace tasks and learn from feedback.
+            </p>
+            <button id="start-simulation" type="button" class="btn btn-primary" data-i18n="startSimulation">
+              Start practice
+            </button>
+          </article>
+
+          <article class="info-card">
+            <h3 data-i18n="portfolioTitle">My portfolio</h3>
+            <p data-i18n="portfolioDescription">
+              Review the evidence of your skills and completed activities.
+            </p>
+            <div id="portfolio-content" aria-live="polite"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Assessment and simulation activity -->
+    <section id="activity" class="section section-muted" hidden>
+      <div class="narrow-container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="practiceLabel">LEARN BY DOING</p>
+          <h2 id="activity-title" data-i18n="activityTitle">Build your skills</h2>
+          <p id="activity-description"></p>
+        </div>
+
+        <div class="form-card">
+          <p id="activity-progress" aria-live="polite"></p>
+          <h3 id="activity-question"></h3>
+          <div id="activity-options" class="answer-options"></div>
+          <p id="activity-feedback" class="form-message" aria-live="polite"></p>
+
+          <button id="activity-next" type="button" class="btn btn-primary" hidden data-i18n="next">
+            Next
+          </button>
+
+          <div id="activity-results" hidden>
+            <h3 data-i18n="resultsTitle">Your results</h3>
+            <p id="results-summary"></p>
+            <button id="activity-retry" type="button" class="btn btn-secondary" data-i18n="retry">
+              Try again
+            </button>
+            <button id="activity-finish" type="button" class="btn btn-primary" data-i18n="backDashboard">
+              Back to dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility tools -->
+    <section id="accessibility" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="accessibilityLabel">ACCESS FOR EVERYONE</p>
+          <h2 data-i18n="accessibilityTitle">Make Proof2Work work for you</h2>
+          <p data-i18n="accessibilityDescription">
+            Use voice controls to listen to page content. Available voices depend on your device.
+          </p>
+        </div>
+
+        <div class="form-card voice-card">
+          <div class="form-group">
+            <label for="voice-language" data-i18n="voiceLanguage">Voice language</label>
+            <select id="voice-language">
+              <option value="en-ZA">English</option>
+              <option value="zu-ZA">isiZulu</option>
+              <option value="st-ZA">Sesotho</option>
+              <option value="nso-ZA">Sepedi</option>
+            </select>
+          </div>
+
+          <div class="voice-controls">
+            <button id="speak-page" type="button" class="btn btn-primary" data-i18n="readPage">
+              Read page aloud
+            </button>
+            <button id="pause-voice" type="button" class="btn btn-secondary" data-i18n="pauseVoice">
+              Pause / resume
+            </button>
+            <button id="stop-voice" type="button" class="btn btn-secondary" data-i18n="stopVoice">
+              Stop reading
+            </button>
+          </div>
+
+          <p id="voice-message" class="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <div id="account-actions" class="account-actions" hidden>
+      <div class="container account-actions-inner">
+        <button id="logout-button" type="button" class="btn btn-secondary" data-i18n="logOut">
+          Log out
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="current-year"></span> Proof2Work</p>
+      <p data-i18n="footerTagline">Your skills. Your proof. Your future.</p>
+    </div>
+  </footer>
 </body>
 </html>
